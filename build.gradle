@@ -36,11 +36,11 @@ dependencies {
     providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
     providedCompile 'javax.faces:javax.faces-api:2.3'
     providedCompile 'com.sun.faces:jsf-impl:2.3.9.SP01'
-    // Weld - CDI reference implementation (downgraded to Weld 3.x for javax compatibility)
-    implementation 'org.jboss.weld.servlet:weld-servlet-core:3.1.7.Final'
-
-    // TomEE's Tomcat JNDI Java support
-    implementation 'org.apache.tomee:tomee-loader:8.0.6'
+//    // Weld - CDI reference implementation (downgraded to Weld 3.x for javax compatibility)
+//    implementation 'org.jboss.weld.servlet:weld-servlet-core:3.1.7.Final'
+//
+//    // TomEE's Tomcat JNDI Java support
+//    implementation 'org.apache.tomee:tomee-loader:8.0.6'
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
