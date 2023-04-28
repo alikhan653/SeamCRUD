@@ -1,5 +1,6 @@
 package com.example.seamcrud;
 
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

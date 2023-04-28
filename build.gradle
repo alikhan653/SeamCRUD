@@ -28,22 +28,37 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    implementation 'javax:javaee-api:8.0'
+   // implementation 'javax:javaee-api:8.0'
+    implementation 'jakarta.platform:jakarta.jakartaee-api:8.0.0'
     implementation 'org.jboss.seam:jboss-seam:2.3.1.Final'
     implementation 'org.hibernate:hibernate-entitymanager:5.4.32.Final'
+    implementation 'org.hibernate:hibernate-core:5.4.32.Final'
     implementation 'org.postgresql:postgresql:42.2.23'
 
-    providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
-    providedCompile 'javax.faces:javax.faces-api:2.3'
+    implementation 'org.apache.myfaces.core:myfaces-api:2.3.6'
+    implementation 'org.apache.myfaces.core:myfaces-impl:2.3.6'
+
+    providedCompile 'javax.servlet:javax.servlet-api:4.0.1'               //working dependensies
+//    providedCompile 'javax.faces:javax.faces-api:2.3'
     providedCompile 'com.sun.faces:jsf-impl:2.3.9.SP01'
-//    // Weld - CDI reference implementation (downgraded to Weld 3.x for javax compatibility)
-//    implementation 'org.jboss.weld.servlet:weld-servlet-core:3.1.7.Final'
-//
-//    // TomEE's Tomcat JNDI Java support
-//    implementation 'org.apache.tomee:tomee-loader:8.0.6'
+
+    implementation 'javax.servlet:jstl:1.2'
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
+
+//        implementation 'jakarta.platform:jakarta.jakartaee-api:9.1.0'
+//        implementation 'org.jboss.seam:jboss-seam:2.3.1.Final'
+//        implementation 'org.hibernate:hibernate-entitymanager:5.4.32.Final'
+//        implementation 'org.postgresql:postgresql:42.2.23'
+//
+//        providedCompile 'jakarta.servlet:jakarta.servlet-api:5.0.0'
+//        implementation 'org.glassfish:jakarta.faces:2.3.16'
+//        providedCompile 'org.glassfish.main.extras:glassfish-embedded-web:6.2.0'
+//
+//        testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+//        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
 
 test {
