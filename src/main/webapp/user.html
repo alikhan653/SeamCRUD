@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User CRUD Form</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!--    Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carlito&family=Oswald:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        h3 {
+            font-weight: bold;
+        }
+        body {
+            font-family: 'Carlito', sans-serif;
+        }
+        .welcomeText {
+            margin-bottom: 30px;
+            display: block;
+            text-align: center;
+        }
+        label {
+            display: block;
+            text-align: center;
+        }
+        div {
+            text-align: center;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .button-container {
+            text-align: center;
+        }
+        .button-container button {
+            width: 50%;
+            margin: 20px auto;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #4CAF50;
+            color: #fff;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        form {
+            width: 60%;
+            margin: auto;
+            background-color: #f2f2f2;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            align-content: center;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="container mt-5">
+
+
+
+
+        <form id="userForm">
+            <h3 class="welcomeText" >User form</h3>
+                <div class="form-group" >
+                    <label for="userId" >User ID:</label>
+                    <input type="text" class="form-control" id="userId" placeholder="Enter User ID" required>
+                </div>
+                <div class="form-group">
+                    <label for="userName">Name:</label>
+                    <input type="text" class="form-control" id="userName" placeholder="Enter Name" required>
+                </div>
+                <div class="form-group" >
+                    <label for="userPhone" >User phone:</label>
+                    <input type="tel" class="form-control" id="userPhone" placeholder="+7 (707)-123-12-12" pattern="\(\d{3}\) \d{3}\-\d{4}" required>
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">Email:</label>
+                    <input type="email" class="form-control" id="userEmail" placeholder="Enter Email" required>
+                </div>
+                <div class="button-container">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+        </form>
+
+
+    <table class="table mt-4">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody id="userTable">
+
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    const users = [];
+
+    // Form submission event
+    document.getElementById('userForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const userId = document.getElementById('userId').value;
+        const userName = document.getElementById('userName').value;
+        const userPhone = document.getElementById('userPhone').value;
+        const userEmail = document.getElementById('userEmail').value;
+
+        const duplicateUser = users.find(user => user.id === userId);
+        const duplicatePhone = users.find(user => user.phone === userPhone);
+
+        if (duplicateUser) {
+            alert('A user with the same ID already exists');
+        }
+        else if (duplicatePhone){
+            alert('A user with the same phone number already exist');
+        } else {
+            // Add the user to the users array
+            users.push({
+                id: userId,
+                name: userName,
+                phone: userPhone,
+                email: userEmail,
+            });
+
+            // Clear the form
+            document.getElementById('userForm').reset();
+
+            // Update the user table
+            displayUsers();
+        }
+    });
+
+    function displayUsers() {
+        const userTable = document.getElementById('userTable');
+        userTable.innerHTML = '';
+
+        users.forEach((user, index) => {
+            const row = `
+                <tr>
+                    <td>${user.id}</td>
+                    <td>${user.name}</td>
+                    <td>${user.phone}</td>
+                    <td>${user.email}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" onclick="editUser(${
+                index})">Edit</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteUser(${index})">Delete</button>
+                    </td>
+                </tr>
+            `;
+
+            userTable.innerHTML += row;
+        });
+    }
+
+    function editUser(index) {
+        const user = users[index];
+        document.getElementById('userId').value = user.id;
+        document.getElementById('userName').value = user.name;
+        document.getElementById('userPhone').value = user.phone;
+        document.getElementById('userEmail').value = user.email;
+
+        // Remove the user from the list
+        users.splice(index, 1);
+
+        // Update the user table
+        displayUsers();
+    }
+
+    function deleteUser(index) {
+        // Remove the user from the list
+        users.splice(index, 1);
+
+        // Update the user table
+        displayUsers();
+    }
+</script>
+</body>
+</html>

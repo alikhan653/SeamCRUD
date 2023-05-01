@@ -6,29 +6,29 @@
          version="4.0">
 
 
-    <context-param>
-        <param-name>javax.faces.APPLICATION_FACTORY</param-name>
-        <param-value>org.apache.myfaces.application.ApplicationFactoryImpl</param-value>
-    </context-param>
-    <context-param>
-        <param-name>javax.faces.FACELETS_DECORATORS</param-name>
-        <param-value>org.apache.myfaces.view.facelets.FaceletViewDeclarationLanguageFactory</param-value>
-    </context-param>
-    <context-param>
-        <param-name>javax.faces.LIFECYCLE_ID</param-name>
-        <param-value>org.apache.myfaces.lifecycle.LifecycleFactoryImpl</param-value>
-    </context-param>
-    <context-param>
-        <param-name>javax.faces.RENDER_KIT_FACTORY</param-name>
-        <param-value>org.apache.myfaces.renderkit.RenderKitFactoryImpl</param-value>
-    </context-param>
-    <context-param>
-        <param-name>javax.faces.VALIDATION_FACTORY</param-name>
-        <param-value>org.apache.myfaces.validator.BeanValidatorFactoryImpl</param-value>
-    </context-param>
-    <context-param>
-        <param-name>javax.faces.context.FACES_CONTEXT_FACTORY</param-name>
-        <param-value>org.apache.myfaces.context.FacesContextFactoryImpl</param-value>
-    </context-param>
+<!--    <context-param>-->
+<!--        <param-name>javax.faces.APPLICATION_FACTORY</param-name>-->
+<!--        <param-value>org.apache.myfaces.application.ApplicationFactoryImpl</param-value>-->
+<!--    </context-param>-->
+<!--    <context-param>-->
+<!--        <param-name>javax.faces.FACELETS_DECORATORS</param-name>-->
+<!--        <param-value>org.apache.myfaces.view.facelets.FaceletViewDeclarationLanguageFactory</param-value>-->
+<!--    </context-param>-->
+<!--    <context-param>-->
+<!--        <param-name>javax.faces.LIFECYCLE_ID</param-name>-->
+<!--        <param-value>org.apache.myfaces.lifecycle.LifecycleFactoryImpl</param-value>-->
+<!--    </context-param>-->
+<!--    <context-param>-->
+<!--        <param-name>javax.faces.RENDER_KIT_FACTORY</param-name>-->
+<!--        <param-value>org.apache.myfaces.renderkit.RenderKitFactoryImpl</param-value>-->
+<!--    </context-param>-->
+<!--    <context-param>-->
+<!--        <param-name>javax.faces.VALIDATION_FACTORY</param-name>-->
+<!--        <param-value>org.apache.myfaces.validator.BeanValidatorFactoryImpl</param-value>-->
+<!--    </context-param>-->
+<!--    <context-param>-->
+<!--        <param-name>javax.faces.context.FACES_CONTEXT_FACTORY</param-name>-->
+<!--        <param-value>org.apache.myfaces.context.FacesContextFactoryImpl</param-value>-->
+<!--    </context-param>-->
 
 </web-app>
