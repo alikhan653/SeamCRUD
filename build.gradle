@@ -34,13 +34,12 @@ dependencies {
     implementation 'org.hibernate:hibernate-core:5.4.32.Final'
     implementation 'org.postgresql:postgresql:42.2.23'
 
-//    implementation 'org.primefaces:primefaces:8.0'
+    implementation 'org.glassfish:javax.faces:2.2.14' // JSF (Mojarra) 2.2.14
+    implementation 'org.primefaces:primefaces:6.1' // PrimeFaces 6.1
 
     providedCompile 'javax.servlet:javax.servlet-api:4.0.1'               //working dependensies
-//    providedCompile 'javax.faces:javax.faces-api:2.3'
+//    providedCompile 'javax.faces:javax.faces-api:2.3' //
     providedCompile 'com.sun.faces:jsf-impl:2.3.9.SP01'
-
-    compileOnly 'javax.faces:jsf-api:2.1'
 
     implementation 'javax.servlet:jstl:1.2'
 
