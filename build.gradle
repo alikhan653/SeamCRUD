@@ -30,6 +30,17 @@ tasks.withType(JavaCompile) {
 dependencies {
     implementation 'javax:javaee-api:8.0'
     implementation 'org.jboss.seam:jboss-seam:2.3.1.Final'
+    implementation 'org.jboss.seam:jboss-seam-ui:2.3.1.Final'
+
+//    implementation 'org.jboss.seam.faces:seam-faces:3.0.2.Final'
+
+//    implementation 'joda-time:joda-time:2.10.13'
+//    implementation 'org.jboss.logging:jboss-logging:3.4.2.Final'
+//    implementation 'org.slf4j:slf4j-api:1.7.32'
+//    implementation 'org.slf4j:slf4j-log4j12:1.7.32'
+//    implementation 'log4j:log4j:1.2.17'
+
+
     implementation 'org.hibernate:hibernate-entitymanager:5.4.32.Final'
     implementation 'org.hibernate:hibernate-core:5.4.32.Final'
     implementation 'org.postgresql:postgresql:42.2.23'
@@ -37,14 +48,16 @@ dependencies {
     implementation 'org.glassfish:javax.faces:2.2.14' // JSF (Mojarra) 2.2.14
     implementation 'org.primefaces:primefaces:6.1' // PrimeFaces 6.1
 
+    providedCompile 'javax.ejb:javax.ejb-api:3.2.2'
+
     providedCompile 'javax.servlet:javax.servlet-api:4.0.1'               //working dependensies
-//    providedCompile 'javax.faces:javax.faces-api:2.3' //
     providedCompile 'com.sun.faces:jsf-impl:2.3.9.SP01'
 
     implementation 'javax.servlet:jstl:1.2'
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
 
 }
 

@@ -8,7 +8,7 @@ import java.util.List;
 
 @Stateless
 public class UserDAO {
-    @PersistenceContext(unitName = "danPU")
+    @PersistenceContext(unitName = "SeamPrimeFacesGlassfishPU")
     private EntityManager entityManager;
 
     public User findById(Long id) {

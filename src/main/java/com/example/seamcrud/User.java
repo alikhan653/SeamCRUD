@@ -1,11 +1,16 @@
 package com.example.seamcrud;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.jboss.seam.annotations.Name;
 
+import javax.persistence.*;
+
+//import javax.faces.bean.ManagedBean;
+//import javax.faces.bean.RequestScoped;
+//import javax.faces.event.ActionEvent;
+
+@Name("user")
 @Entity
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,4 +51,6 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public User(){ }
 }
