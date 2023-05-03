@@ -31,5 +31,10 @@
       <option name="name" value="maven3" />
       <option name="url" value="https://maven.java.net/content/groups/promoted/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven3" />
+      <option name="name" value="maven3" />
+      <option name="url" value="https://repository.primefaces.org" />
+    </remote-repository>
   </component>
 </project>

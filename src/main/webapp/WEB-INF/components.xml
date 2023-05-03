@@ -10,4 +10,8 @@
             http://jboss.org/schema/seam/components-2.3.xsd">
 
     <core:init jndi-pattern="${jndiPattern}"/>
+
+    <component name="catBean" class="com.example.seamcrud.CatBean"/>
+    <component name="UserBean" class="com.example.seamcrud.UserBean"/>
+
 </components>

@@ -6,4 +6,13 @@
     <application>
         <el-resolver>org.jboss.seam.el.SeamELResolver</el-resolver>
     </application>
+
+<!--    <navigation-rule>-->
+<!--        <from-view-id>/test.xhtml</from-view-id>-->
+<!--        <navigation-case>-->
+<!--            <from-outcome>success</from-outcome>-->
+<!--            <to-view-id>/index.jsp</to-view-id>-->
+<!--            <redirect/>-->
+<!--        </navigation-case>-->
+<!--    </navigation-rule>-->
 </faces-config>

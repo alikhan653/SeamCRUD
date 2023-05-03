@@ -4,11 +4,13 @@ import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Scope;
+import org.jboss.seam.annotations.intercept.PostConstruct;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Name("userBean")
-@Scope(ScopeType.PAGE)
+@Name("UserBean")
+@Scope(ScopeType.CONVERSATION)
 public class UserBean {
     @In
     private UserService userService;
@@ -16,8 +18,15 @@ public class UserBean {
     private User user = new User();
     private List<User> users;
 
+    public UserBean(){
+        users = getUserList();
+    }
+    public List<User> getUserList() {
+        return users;
+    }
     public void loadUsers() {
-        users = userService.getAllUsers();
+        users.add(new User(1L,"2","3"));
+        users.add(new User(2L,"3","4"));
     }
 
     public void saveUser() {
