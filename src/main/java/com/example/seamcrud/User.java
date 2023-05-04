@@ -3,21 +3,26 @@ package com.example.seamcrud;
 import org.jboss.seam.annotations.Name;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 //import javax.faces.bean.ManagedBean;
 //import javax.faces.bean.RequestScoped;
 //import javax.faces.event.ActionEvent;
 
-@Name("user")
+
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name="user")
+public class User implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
+
     private String email;
+
+    // getters and setters
 
     public Long getId() {
         return id;
@@ -42,7 +47,6 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
     public User(){ }
 
     public User(Long id, String name, String email) {

@@ -11,7 +11,7 @@
 
     <core:init jndi-pattern="${jndiPattern}"/>
 
-    <component name="catBean" class="com.example.seamcrud.CatBean"/>
     <component name="UserBean" class="com.example.seamcrud.UserBean"/>
+    <component name="peopleBean" class="com.example.seamcrud.PeopleBean"/>
 
 </components>

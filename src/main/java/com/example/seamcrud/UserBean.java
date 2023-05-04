@@ -6,67 +6,49 @@ import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.annotations.intercept.PostConstruct;
 
+import javax.annotation.ManagedBean;
+import javax.faces.view.ViewScoped;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@ManagedBean
+@ViewScoped
 @Name("UserBean")
-@Scope(ScopeType.CONVERSATION)
-public class UserBean {
-    @In
-    private UserService userService;
+public class UserBean implements Serializable {
 
-    private User user = new User();
     private List<User> users;
 
+    @In
+    private UserDAO userDao;
+
     public UserBean(){
-        users = getUserList();
-    }
-    public List<User> getUserList() {
-        return users;
-    }
-    public void loadUsers() {
-        users.add(new User(1L,"2","3"));
-        users.add(new User(2L,"3","4"));
+        users = userDao.findAll();
     }
 
-    public void saveUser() {
-        userService.addUser(user);
-        user = new User();
-        loadUsers();
+    public void save(User user) {
+        userDao.save(user);
+        users = userDao.findAll();
     }
 
-    public void updateUser(User user) {
-        userService.updateUser(user);
-        loadUsers();
+    public void update(User user) {
+        userDao.update(user);
+        users = userDao.findAll();
     }
 
-    public void deleteUser(Long id) {
-        userService.deleteUser(id);
-        loadUsers();
+    public void delete(User user) {
+        userDao.delete(user);
+        users = userDao.findAll();
     }
 
-    ///////////////////////////////////getter setter
-    public UserService getUserService() {
-        return userService;
-    }
-
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public User findById(Long id) {
+        return userDao.findById(id);
     }
 
     public List<User> getUsers() {
+        if (users == null) {
+            users = userDao.findAll();
+        }
         return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
     }
 }

@@ -9,30 +9,46 @@
 <h:body>
 
     <h:form>
-        <p:dataTable value="#{UserBean.userList}" var="user">
-            <p:column headerText="ID">
-                <h:outputText value="#{users.id}" />
+        <p:dataTable id="peopleTable"  value="#{peopleBean.peopleList}" var="people">
+            <p:column headerText="name">
+                <h:outputText value="#{people.name}" />
             </p:column>
-            <p:column headerText="Name">
-                <h:outputText value="#{user.name}" />
+            <p:column headerText="age">
+                <h:outputText value="#{people.age}" />
             </p:column>
-            <p:column headerText="Email">
-                <h:outputText value="#{user.email}" />
+            <p:column headerText="email">
+                <h:outputText value="#{people.email}" />
+            </p:column>
+            <p:column>
+                <p:commandButton value="Delete" action="#{peopleBean.deletePeople(people)}"/>
             </p:column>
         </p:dataTable>
     </h:form>
 
-    <h:form style="margin-top: 10px">
-        <p:panelGrid columns="2">
-            <p:outputLabel for="username" value="Name: " />
-            <p:inputText id="username" value="#{userBean.user.name}" required="true" />
+        <h:form style="margin-top: 10px">
+            <p:panelGrid columns="2" var="people">
+                <p:outputLabel for="name" value="Name: " />
+                <p:inputText id="name" required="true" />
+                <p:outputLabel for="age" value="Age: " />
+                <p:inputText id="age" required="true" />
+                <p:outputLabel for="email" value="Email: " />
+                <p:inputText id="email" required="true" />
 
+                <p:commandButton value="Create People" actionListener="#{peopleBean.addPeople(people)}" update="peopleTable" />
+            </p:panelGrid>
+        </h:form>
 
-            <p:outputLabel for="lastName" value="Email: " />
-            <p:inputText id="lastName" value="#{userBean.user.email}" required="true" />
+        <h:form style="margin-top: 10px">
+            <p:panelGrid columns="2" var="people">
+                <p:outputLabel for="name_u" value="Name: " />
+                <p:inputText id="name_u" value="#{peopleBean.peopleList.get(0).name}" required="true" />
+                <p:outputLabel for="age_u" value="Age: " />
+                <p:inputText id="age_u" value="#{peopleBean.peopleList.get(0).age}" required="true" />
+                <p:outputLabel for="email_u" value="Email: " />
+                <p:inputText id="email_u" value="#{peopleBean.peopleList.get(0).email}" required="true" />
 
-            <p:commandButton value="Create User" action="#{userBean.createUser}" ajax="false" />
-        </p:panelGrid>
-    </h:form>
+                <p:commandButton value="Update User" action="#{peopleBean.updatePeople(people)}"/>
+            </p:panelGrid>
+        </h:form>
 </h:body>
 </html>
