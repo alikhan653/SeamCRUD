@@ -11,6 +11,13 @@
 
     <core:init jndi-pattern="${jndiPattern}"/>
 
+<!--    <component name="hibernateSessionFactory"-->
+<!--               class="com.example.HibernateSessionFactory"-->
+<!--               scope="APPLICATION"/>-->
+
+<!--    <component name="entityManagerFactory"-->
+<!--               class="org.jboss.seam.persistence.EntityManagerFactory"/>-->
+
     <component name="UserBean" class="com.example.seamcrud.UserBean"/>
     <component name="peopleBean" class="com.example.seamcrud.PeopleBean"/>
 

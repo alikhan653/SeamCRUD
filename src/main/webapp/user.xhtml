@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:s="http://jboss.org/schema/seam/taglib"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
@@ -11,21 +12,30 @@
 </h:head>
 
 <h:body>
-    <h:head>
-        <f:view>
-            <h:form>
-                <s:validateAll>
-                    <h:panelGrid columns="2">
-                        Username: <h:inputText value="#{user.username}" required="true"/>
-                        Real Name: <h:inputText value="#{user.name}" required="true"/>
-                        Password: <h:inputSecret value="#{user.password}" required="true"/>
-                    </h:panelGrid>
-                </s:validateAll>
-                <h:messages/>
-                <h:commandButton value="Register" action="#{register.register}"/>
-            </h:form>
-        </f:view>
-    </h:head>
+     <p:dataTable var="user" value="#{userList.users}">
+            <p:column headerText="ID">
+                <h:outputText value="#{user.id}"/>
+            </p:column>
+            <p:column headerText="Name">
+                <h:outputText value="#{user.name}"/>
+            </p:column>
+            <p:column headerText="Email">
+                <h:outputText value="#{user.email}"/>
+            </p:column>
+     </p:dataTable>
+
+    <h:form style="margin-top: 10px">
+        <p:panelGrid columns="2" var="newUser">
+            <p:outputLabel for="id" value="id: " />
+            <p:inputText id="id" value="#{userList.newUser.id}" required="true" />
+            <p:outputLabel for="email" value="email: " />
+            <p:inputText id="email" value="#{userList.newUser.email}" required="true" />
+            <p:outputLabel for="name" value="name: " />
+            <p:inputText id="name" value="#{userList.newUser.name}" required="true" />
+
+            <p:commandButton value="Create People" action="#{userList.createUser(newUser)}" />
+        </p:panelGrid>
+    </h:form>
 </h:body>
 
 </html>

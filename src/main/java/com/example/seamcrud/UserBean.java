@@ -7,48 +7,44 @@ import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.annotations.intercept.PostConstruct;
 
 import javax.annotation.ManagedBean;
+import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@ManagedBean
+@Named
 @ViewScoped
-@Name("UserBean")
 public class UserBean implements Serializable {
 
+    @EJB
+    private UserDao userDao;
+
     private List<User> users;
+    private User user = new User();
 
-    @In
-    private UserDAO userDao;
-
-    public UserBean(){
-        users = userDao.findAll();
+    @PostConstruct
+    public void init() {
+        users = userDao.getAll();
     }
 
-    public void save(User user) {
+    public void save() {
         userDao.save(user);
-        users = userDao.findAll();
+        user = new User();
+        users = userDao.getAll();
     }
 
-    public void update(User user) {
+    public void update() {
         userDao.update(user);
-        users = userDao.findAll();
+        user = new User();
+        users = userDao.getAll();
     }
 
     public void delete(User user) {
         userDao.delete(user);
-        users = userDao.findAll();
+        users = userDao.getAll();
     }
 
-    public User findById(Long id) {
-        return userDao.findById(id);
-    }
-
-    public List<User> getUsers() {
-        if (users == null) {
-            users = userDao.findAll();
-        }
-        return users;
-    }
+    // getters and setters
 }

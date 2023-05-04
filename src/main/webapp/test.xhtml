@@ -8,7 +8,6 @@
 </h:head>
 <h:body>
 
-    <h:form>
         <p:dataTable id="peopleTable"  value="#{peopleBean.peopleList}" var="people">
             <p:column headerText="name">
                 <h:outputText value="#{people.name}" />
@@ -20,10 +19,10 @@
                 <h:outputText value="#{people.email}" />
             </p:column>
             <p:column>
-                <p:commandButton value="Delete" action="#{peopleBean.deletePeople(people)}"/>
+                <p:commandButton value="Delete" action="#{peopleBean.deletePeople(people)}" update="peopleTable" />
             </p:column>
         </p:dataTable>
-    </h:form>
+
 
         <h:form style="margin-top: 10px">
             <p:panelGrid columns="2" var="people">
@@ -34,7 +33,7 @@
                 <p:outputLabel for="email" value="Email: " />
                 <p:inputText id="email" required="true" />
 
-                <p:commandButton value="Create People" actionListener="#{peopleBean.addPeople(people)}" update="peopleTable" />
+                <p:commandButton value="Create People" action="#{peopleBean.addPeople(people)}" />
             </p:panelGrid>
         </h:form>
 
@@ -50,5 +49,6 @@
                 <p:commandButton value="Update User" action="#{peopleBean.updatePeople(people)}"/>
             </p:panelGrid>
         </h:form>
+
 </h:body>
 </html>
